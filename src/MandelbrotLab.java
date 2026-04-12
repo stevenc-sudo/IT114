@@ -250,19 +250,7 @@ public class MandelbrotLab {
      *              result[0] = cReal
      *              result[1] = cImag
      */
-    // This method converts a pixel position (px, py) on the screen
-    // into a point in the complex plane (cReal, cImag).
-    public static double[] pixelToComplex(int px, int py) {
-        // TODO: Calculate cReal using the formula above
-        double cReal = X_MIN + ((double) px / IMAGE_WIDTH) * (X_MAX - X_MIN);
-        // The image is a grid of pixels, but the Mandelbrot set exists
-        // in a coordinate system from X_MIN to X_MAX and Y_MIN to Y_MAX.
-        // TODO: Calculate cImag using the formula above (remember to flip y!)
-        double cImag = Y_MAX - ((double) py / IMAGE_HEIGHT) * (Y_MAX - Y_MIN);
 
-
-        return new double[]{cReal, cImag};
-    }
 
 
     // =========================================================================
@@ -302,18 +290,7 @@ public class MandelbrotLab {
      * @param iterations  the value returned by countIterations() for this pixel
      * @return            an RGB color packed as a single int (0xRRGGBB)
      */
-    public static int getColor(int iterations) {
-        if (iterations == MAX_ITERATIONS) {
-            return 0x000000;
-        }
-        // If iterations reaches MAX_ITERATIONS,
-        // it means the point never escaped, so we color it black.
-        int gray = (int) (255.0 * iterations / MAX_ITERATIONS);
-        return (gray << 16) | (gray << 8) | gray;
-        // Otherwise,
-        // It converts the number of iterations into a grayscale color.
-        // More iterations = brighter color, fewer iterations = darker color.
-    }
+
 
 
     // =========================================================================
